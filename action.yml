@@ -29,6 +29,14 @@ inputs:
 runs:
   using: python3
   main: "./docker_readme.py"
+  env:
+    DOCKER_USERNAME: "${{ username }}"
+    DOCKER_PASSWORD: "${{ password }}"
+  args:
+    - "--readme"
+    - "${{ readme }}"
+    - "--repos"
+    - "${{ repository }}"
 
 branding:
   icon: anchor
