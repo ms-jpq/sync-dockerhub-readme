@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Sync
-        uses: ms-jpq/dockerhub-readme@d676b6beff6aa624d7ecb79181d6efa1686072cf
+        uses: ms-jpq/dockerhub-readme@de99b11f4cfc30b75f25be857ef65a77371d6088
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
