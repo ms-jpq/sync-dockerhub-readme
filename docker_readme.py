@@ -63,6 +63,7 @@ def set_repo(token: str, username: str, repo: str, readme: str) -> str:
       headers={"Content-Type": "application/json",
                "Authorization": f"Bearer {token}"},
       data=dumps(data).encode())
+  print(uri)
   with urlopen(req) as resp:
     msg = resp.read().decode()
     return loads(msg)["full_description"]
@@ -72,6 +73,7 @@ def main() -> None:
   args = parse_args()
   readme = slurp(args.readme)
   token = login(args.username, args.password)
+  print(readme)
   for repo in args.repos:
     desc = set_repo(
         token=token,
