@@ -53,7 +53,7 @@ def set_repo(token: str, username: str, repo: str, readme: str) -> None:
       uri,
       method="POST",
       headers={"Content-Type": "application/json",
-               "Authorization": f"JWT {token}"},
+               "Authorization": f"Bearer {token}"},
       data=dumps(data).encode())
   with urlopen(req) as resp:
     msg = resp.read().decode()
