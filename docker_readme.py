@@ -54,8 +54,8 @@ def login(username: str, password: str) -> str:
     return loads(msg)["token"]
 
 
-def set_repo(token: str, username: str, repo: str, readme: str) -> str:
-  uri = f"https://hub.docker.com/v2/repositories/{username}/{repo}/"
+def set_repo(token: str, repo: str, readme: str) -> str:
+  uri = f"https://hub.docker.com/v2/repositories/{repo}/"
   data = {"full_description": readme}
   req = Request(
       uri,
@@ -63,7 +63,6 @@ def set_repo(token: str, username: str, repo: str, readme: str) -> str:
       headers={"Content-Type": "application/json",
                "Authorization": f"Bearer {token}"},
       data=dumps(data).encode())
-  print("".join(reversed(uri)))
   with urlopen(req) as resp:
     msg = resp.read().decode()
     return loads(msg)["full_description"]
