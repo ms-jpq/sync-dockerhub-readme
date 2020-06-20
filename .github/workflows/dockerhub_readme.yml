@@ -1,5 +1,5 @@
 ---
-name: Release
+name: Sync Readme
 
 on:
   push:
@@ -10,19 +10,18 @@ on:
 
 
 jobs:
-  build:
+  sync:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build
-        uses: docker/build-push-action@v1
+      - name: Sync
+        uses: ms-jpq/dockerhub-readme
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: ${{ secrets.DOCKER_USERNAME }}/dockerhub-readme
-          tags: latest
-          Dockerfile: Dockerfile
+          readme: "./README.md"
 
