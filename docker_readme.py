@@ -3,9 +3,17 @@
 from argparse import ArgumentParser, Namespace
 from json import dumps, loads
 from os import environ
-from pprint import pprint
+from shutil import get_terminal_size
 from sys import stderr
+from typing import Any
 from urllib.request import Request, urlopen
+
+
+def big_print(msg: str) -> None:
+  _, cols = get_terminal_size()
+  print(cols * "-")
+  print(msg)
+  print(cols * "-")
 
 
 def slurp(path: str) -> str:
@@ -34,7 +42,7 @@ def parse_args() -> Namespace:
 
 
 def login(username: str, password: str) -> str:
-  uri = f"https://hub.docker.com/v2/users/login"
+  uri = f"https://hub.docker.com/v2/users/login/"
   data = {"username": username, "password": password}
   req = Request(
       uri,
@@ -46,18 +54,18 @@ def login(username: str, password: str) -> str:
     return loads(msg)["token"]
 
 
-def set_repo(token: str, username: str, repo: str, readme: str) -> None:
-  uri = f"https://hub.docker.com/v2/repositories/{username}/{repo}"
+def set_repo(token: str, username: str, repo: str, readme: str) -> str:
+  uri = f"https://hub.docker.com/v2/repositories/{username}/{repo}/"
   data = {"full_description": readme}
   req = Request(
       uri,
-      method="POST",
+      method="PATCH",
       headers={"Content-Type": "application/json",
                "Authorization": f"Bearer {token}"},
       data=dumps(data).encode())
   with urlopen(req) as resp:
     msg = resp.read().decode()
-    return loads(msg)
+    return loads(msg)["full_description"]
 
 
 def main() -> None:
@@ -65,13 +73,14 @@ def main() -> None:
   readme = slurp(args.readme)
   token = login(args.username, args.password)
   for repo in args.repos:
-    msg = set_repo(
+    desc = set_repo(
         token=token,
         username=args.username,
         repo=repo,
         readme=readme,
     )
-    pprint(msg)
+    big_print(repo)
+    print(desc)
 
 
 main()
