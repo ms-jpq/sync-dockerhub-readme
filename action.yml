@@ -27,8 +27,8 @@ inputs:
       (without username)
 
 runs:
-  using: python3
-  main: "./docker_readme.py"
+  using: docker
+  image: "Dockerfile"
   env:
     DOCKER_USERNAME: "${{ username }}"
     DOCKER_PASSWORD: "${{ password }}"
