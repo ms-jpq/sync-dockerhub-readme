@@ -75,7 +75,6 @@ def main() -> None:
   for repo in args.repos:
     desc = set_repo(
         token=token,
-        username=args.username,
         repo=repo,
         readme=readme,
     )
