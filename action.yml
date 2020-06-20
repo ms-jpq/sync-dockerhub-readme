@@ -1,0 +1,36 @@
+---
+name: Dockerhub Readme
+author: ms-jpq
+description: |-
+  sync Github <readme.md> with Dockerhub
+
+inputs:
+  username:
+    required: True
+    description: |-
+      Dockerhub username
+
+  password:
+    required: True
+    description: |-
+      Dockerhub password
+
+  readme:
+    required: True
+    description: |-
+      path to readme markdown
+
+  repository:
+    required: True
+    description: |-
+      list of repositories to update
+      (without username)
+
+runs:
+  using: python3
+  main: "./docker_readme.py"
+
+branding:
+  icon: anchor
+  color: blue
+
