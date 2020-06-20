@@ -30,13 +30,13 @@ runs:
   using: docker
   image: "Dockerfile"
   env:
-    DOCKER_USERNAME: "${{ username }}"
-    DOCKER_PASSWORD: "${{ password }}"
+    DOCKER_USERNAME: "${{ inputs.username }}"
+    DOCKER_PASSWORD: "${{ inputs.password }}"
   args:
     - "--readme"
-    - "${{ readme }}"
+    - "${{ inputs.readme }}"
     - "--repos"
-    - "${{ repository }}"
+    - "${{ inputs.repository }}"
 
 branding:
   icon: anchor
