@@ -17,6 +17,8 @@ Sync <readme.md> to Dockerhub
 
 ## Docker Image
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/msjpq/firefox-vnc.svg)](https://hub.docker.com/r/msjpq/sync-dockerhub-readme/)
+
 ```sh
 docker run -it --rm msjpq/sync-dockerhub-readme \
   --username <dockerhub username> \
