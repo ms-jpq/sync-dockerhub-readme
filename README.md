@@ -18,7 +18,7 @@ Sync <readme.md> to Dockerhub
 ## Docker Image
 
 ```sh
-docker run -it --rm ms-jpq/sync-dockerhub-readme \
+docker run -it --rm msjpq/sync-dockerhub-readme \
   --username <dockerhub username> \
   --password <dockerhub password> \
   --repo <dockerhub name/repo> \
