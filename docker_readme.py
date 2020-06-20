@@ -3,12 +3,13 @@
 from argparse import ArgumentParser, Namespace
 from json import dumps, loads
 from os import environ
+from pprint import pprint
 from sys import stderr
 from urllib.request import Request, urlopen
 
 
 def slurp(path: str) -> str:
-  with open(path, "w") as fd:
+  with open(path) as fd:
     return fd.read()
 
 
@@ -64,12 +65,13 @@ def main() -> None:
   readme = slurp(args.readme)
   token = login(args.username, args.password)
   for repo in args.repos:
-    set_repo(
+    msg = set_repo(
         token=token,
         username=args.username,
         repo=repo,
         readme=readme,
     )
+    pprint(msg)
 
 
 main()
