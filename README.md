@@ -1,4 +1,15 @@
-# Dockerhub Readme
+# Sync Dockerhub Readme
 
-Sync <readme.md> from Github to Dockerhub
+Sync <readme.md> to Dockerhub
 
+## Github Action
+
+```yaml
+
+```
+
+## Docker Image
+
+```sh
+
+```
