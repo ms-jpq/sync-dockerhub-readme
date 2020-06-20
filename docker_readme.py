@@ -35,7 +35,7 @@ def parse_args() -> Namespace:
                       default=password)
 
   parser.add_argument("--readme", required=True)
-  parser.add_argument("--repos", required=True, nargs="+")
+  parser.add_argument("--repo", required=True)
 
   args = parser.parse_args()
   return args
@@ -72,14 +72,12 @@ def main() -> None:
   args = parse_args()
   readme = slurp(args.readme)
   token = login(args.username, args.password)
-  for repo in args.repos:
-    desc = set_repo(
-        token=token,
-        repo=repo,
-        readme=readme,
-    )
-    big_print(repo)
-    print(desc)
+  desc = set_repo(
+      token=token,
+      repo=args.repo,
+      readme=readme,
+  )
+  big_print(desc)
 
 
 main()
