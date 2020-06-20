@@ -22,6 +22,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ${{ secrets.DOCKER_USERNAME }}/dockerhub-readme
+          repository: ${{ secrets.DOCKER_USERNAME }}/sync-dockerhub-readme
           readme: "./README.md"
 
