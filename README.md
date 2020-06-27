@@ -1,4 +1,4 @@
-# Sync Dockerhub Readme
+# [Sync Dockerhub Readme](https://ms-jpq.github.io/sync-dockerhub-readme)
 
 Sync <readme.md> to Dockerhub
 
@@ -16,6 +16,8 @@ Sync <readme.md> to Dockerhub
 ```
 
 ## Docker Image
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/msjpq/sync-dockerhub-readme.svg)](https://hub.docker.com/r/msjpq/sync-dockerhub-readme/)
 
 ```sh
 docker run -it --rm msjpq/sync-dockerhub-readme \
