@@ -1,8 +1,6 @@
+---
 title: Dockerhub Sync Readme
 
 showcase: True
-
-desc: >-
-   Github action to sync <readme.md> to Dockerhub
    
 images: []
