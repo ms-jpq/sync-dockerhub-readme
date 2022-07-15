@@ -30,6 +30,8 @@ def parse_args() -> Namespace:
 
     parser.add_argument("--readme", required=True)
     parser.add_argument("--repo", required=True)
+    parser.add_argument("--replace-pattern", type=str, required=False)
+    parser.add_argument("--replace-with", type=str, required=False)
 
     args = parser.parse_args()
     return args
@@ -66,9 +68,16 @@ def set_repo(token: str, repo: str, readme: str) -> str:
         return loads(msg)["full_description"]
 
 
+def replace_patterns(readme: str, replace_pattern: str, replace_with: str) -> str:
+    return readme.replace(replace_pattern, replace_with)
+
+
 def main() -> None:
     args = parse_args()
+    print(args)
     readme = slurp(args.readme)
+    if args.replace_pattern and args.replace_with:
+        readme = replace_patterns(readme, args.replace_pattern, args.replace_with)
     token = login(args.username, args.password)
     desc = set_repo(token=token, repo=args.repo, readme=readme,)
     big_print(desc)
