@@ -26,6 +26,20 @@ inputs:
       list of repositories to update
       (without username)
 
+  replace_pattern:
+    required: False
+    description: |-
+      if set, all occurences of "replace_pattern" 
+      will be replaced with "replace_with"
+    default: ''
+
+  replace_with:
+    required: False
+    description: |-
+      if set, all occurences of "replace_pattern" 
+      will be replaced with "replace_with"
+    default: ''
+
 runs:
   using: docker
   image: "Dockerfile"
@@ -37,6 +51,10 @@ runs:
     - "${{ inputs.readme }}"
     - "--repo"
     - "${{ inputs.repository }}"
+    - "--replace-pattern"
+    - "${{ inputs.replace_pattern }}"
+    - "--replace-with"
+    - "${{ inputs.replace_with }}"
 
 branding:
   icon: anchor
